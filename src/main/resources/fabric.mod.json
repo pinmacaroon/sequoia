@@ -3,9 +3,9 @@
 	"id": "sequoia",
 	"version": "${version}",
 	"name": "Sequoia",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Adds a really nice biome with some really tall trees!",
 	"authors": [
-		"Me!"
+		"BoxedBoi, PinMacaroon"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
