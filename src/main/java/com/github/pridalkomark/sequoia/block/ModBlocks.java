@@ -20,8 +20,8 @@ public class ModBlocks {
     public static final Block SEQUOIA_PLANKS = registerBlock("sequoia_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(3f)));
     public static final Block SEQUOIA_LEAVES = registerBlock("sequoia_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(3f).nonOpaque()));
 
-    //TODO custom falling block class pls pridalkomark do it :3
-    public static final Block PINECONE = registerBlock("pinecone", new FallingBlock(FabricBlockSettings.create().strength(3f).sounds(BlockSoundGroup.WOOD)));
+    //credit: potato_archivist
+    public static final Block PINECONE = registerBlock("pinecone", new FallingPineconeBlock(FabricBlockSettings.create().strength(3f).sounds(BlockSoundGroup.WOOD)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
