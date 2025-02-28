@@ -8,10 +8,10 @@
 		"BoxedBoi, PinMacaroon"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/organization/colonthreegang",
+		"sources": "https://modrinth.com/mod/sequoia-pine"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/sequoia/icon.png",
 	"environment": "*",
 	"entrypoints": {
