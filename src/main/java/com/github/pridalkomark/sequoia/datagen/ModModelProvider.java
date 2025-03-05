@@ -21,6 +21,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEQUOIA_LEAVES);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.SEQUOIA_TRAPDOOR);
         blockStateModelGenerator.registerDoor(ModBlocks.SEQUOIA_DOOR);
+
         //blockStateModelGenerator.cre(ModBlocks.SEQUOIA_DOOR);                                                         https://youtu.be/TgDh216TelA?t=496
     }
 
