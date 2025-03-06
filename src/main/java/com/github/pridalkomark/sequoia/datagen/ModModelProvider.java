@@ -17,12 +17,21 @@ public class ModModelProvider extends FabricModelProvider {
                 .log(ModBlocks.SEQUOIA_LOG).wood(ModBlocks.SEQUOIA_WOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_SEQUOIA_LOG)
                 .log(ModBlocks.STRIPPED_SEQUOIA_LOG).wood(ModBlocks.STRIPPED_SEQUOIA_WOOD);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEQUOIA_PLANKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SEQUOIA_LEAVES);
-        blockStateModelGenerator.registerTrapdoor(ModBlocks.SEQUOIA_TRAPDOOR);
-        blockStateModelGenerator.registerDoor(ModBlocks.SEQUOIA_DOOR);
 
-        //blockStateModelGenerator.cre(ModBlocks.SEQUOIA_DOOR);                                                         https://youtu.be/TgDh216TelA?t=496
+        BlockStateModelGenerator.BlockTexturePool sequoiaPool =
+                blockStateModelGenerator.registerCubeAllModelTexturePool(
+                        ModBlocks.SEQUOIA_PLANKS
+                );
+        sequoiaPool.stairs(ModBlocks.SEQUOIA_STAIRS);
+        sequoiaPool.slab(ModBlocks.SEQUOIA_SLAB);
+        sequoiaPool.pressurePlate(ModBlocks.SEQUOIA_PRESSURE_PLATE);
+        sequoiaPool.button(ModBlocks.SEQUOIA_BUTTON);
+        sequoiaPool.fence(ModBlocks.SEQUOIA_FENCE);
+        sequoiaPool.fenceGate(ModBlocks.SEQUOIA_FENCE_GATE);
+
+        blockStateModelGenerator.registerDoor(ModBlocks.SEQUOIA_DOOR);
+        blockStateModelGenerator.registerTrapdoor(ModBlocks.SEQUOIA_TRAPDOOR);
     }
 
     @Override

@@ -132,7 +132,7 @@ public class ModBlocks {
             )
     );
     public static final Block SEQUOIA_BUTTON = registerBlock(
-            "sequoia_trapdoor",
+            "sequoia_button",
             createWoodenButtonBlock(BlockSetType.OAK)
     );
 
