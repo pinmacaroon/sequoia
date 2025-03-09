@@ -21,5 +21,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SEQUOIA_WOOD)
                 .add(ModBlocks.STRIPPED_SEQUOIA_LOG)
                 .add(ModBlocks.STRIPPED_SEQUOIA_WOOD);
+        getOrCreateTagBuilder(BlockTags.FENCES)
+                .add(ModBlocks.SEQUOIA_FENCE);
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+                .add(ModBlocks.SEQUOIA_FENCE_GATE);
     }
 }
