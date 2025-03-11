@@ -1,0 +1,17 @@
+{
+    "block.sequoia.sequoia_log": "Sequoia Log",
+    "block.sequoia.sequoia_wood": "Sequoia Wood",
+    "block.sequoia.stripped_sequoia_log": "Stripped Sequoia Log",
+    "block.sequoia.stripped_sequoia_wood": "Stripped Sequoia Wood",
+    "block.sequoia.sequoia_planks": "Sequoia Planks",
+    "block.sequoia.sequoia_leaves": "Sequoia Leaves",
+    "block.sequoia.sequoia_slab": "Sequoia Slab",
+    "block.sequoia.sequoia_stairs": "Sequoia Stairs",
+    "block.sequoia.sequoia_fence": "Sequoia Fence",
+    "block.sequoia.sequoia_fence_gate": "Sequoia Fence Gate",
+    "block.sequoia.sequoia_door": "Sequoia Door",
+    "block.sequoia.sequoia_pressure_plate": "Sequoia Pressure Plate",
+    "block.sequoia.sequoia_trapdoor": "Sequoia Trapdoor",
+    "block.sequoia.sequoia_button": "Sequoia Button",
+    "block.sequoia.pinecone": "Pinecone"
+}
