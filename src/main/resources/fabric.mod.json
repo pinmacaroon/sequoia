@@ -16,13 +16,16 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.github.pridalkomark.sequoia.Sequoia"
+			"com.github.pinmacaroon.sequoia.Sequoia"
 		],
 		"client": [
-			"com.github.pridalkomark.sequoia.SequoiaClient"
+			"com.github.pinmacaroon.sequoia.SequoiaClient"
 		],
 		"fabric-datagen": [
-			"com.github.pridalkomark.sequoia.SequoiaDataGenerator"
+			"com.github.pinmacaroon.sequoia.SequoiaDataGenerator"
+		],
+		"terrablender": [
+			"com.github.pinmacaroon.sequoia.world.biome.ModTerrablenderApi"
 		]
 	},
 	"mixins": [
