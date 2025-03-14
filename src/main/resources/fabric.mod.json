@@ -1,43 +1,43 @@
 {
-	"schemaVersion": 1,
-	"id": "sequoia",
-	"version": "${version}",
-	"name": "Sequoia",
-	"description": "Adds a really nice biome with some really tall trees!",
-	"authors": [
-		"BoxedBoi, PinMacaroon"
-	],
-	"contact": {
-		"homepage": "https://modrinth.com/organization/colonthreegang",
-		"sources": "https://modrinth.com/mod/sequoia-pine"
-	},
-	"license": "MIT",
-	"icon": "assets/sequoia/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.github.pinmacaroon.sequoia.Sequoia"
-		],
-		"client": [
-			"com.github.pinmacaroon.sequoia.SequoiaClient"
-		],
-		"fabric-datagen": [
-			"com.github.pinmacaroon.sequoia.SequoiaDataGenerator"
-		],
-		"terrablender": [
-			"com.github.pinmacaroon.sequoia.world.biome.ModTerrablenderApi"
-		]
-	},
-	"mixins": [
-		"sequoia.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.16.10",
-		"minecraft": "~1.20.1",
-		"java": ">=17",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+    "schemaVersion": 1,
+    "id": "sequoia",
+    "version": "${version}",
+    "name": "Sequoia",
+    "description": "Adds a really nice biome with some really tall trees!",
+    "authors": [
+        "BoxedBoi, PinMacaroon"
+    ],
+    "contact": {
+        "homepage": "https://modrinth.com/organization/colonthreegang",
+        "sources": "https://modrinth.com/mod/sequoia-pine"
+    },
+    "license": "MIT",
+    "icon": "assets/sequoia/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.github.pinmacaroon.sequoia.Sequoia"
+        ],
+        "client": [
+            "com.github.pinmacaroon.sequoia.SequoiaClient"
+        ],
+        "fabric-datagen": [
+            "com.github.pinmacaroon.sequoia.SequoiaDataGenerator"
+        ],
+        "terrablender": [
+            "com.github.pinmacaroon.sequoia.world.biome.ModTerrablenderApi"
+        ]
+    },
+    "mixins": [
+        "sequoia.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.16.10",
+        "minecraft": "~1.20.1",
+        "java": ">=17",
+        "fabric-api": "*"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
 }
