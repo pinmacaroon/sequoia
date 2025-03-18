@@ -15,6 +15,7 @@ import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.PineFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 public class ModConfiguredFeatures {
 
@@ -23,7 +24,7 @@ public class ModConfiguredFeatures {
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         register(context, SEQUOIA_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LOG),
-                new GiantTrunkPlacer(5, 4, 3),
+                new StraightTrunkPlacer(5, 4, 3),
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LEAVES),
                 new PineFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(1), ConstantIntProvider.create(7)),
                 new TwoLayersFeatureSize(1, 0, 2))

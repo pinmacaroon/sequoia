@@ -1,6 +1,7 @@
 package com.github.pinmacaroon.sequoia.world.biome;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
+import com.github.pinmacaroon.sequoia.world.ModConfiguredFeatures;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -16,6 +17,8 @@ import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.MiscPlacedFeatures;
+import net.minecraft.world.gen.feature.UndergroundPlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 public class ModBiomes {
@@ -38,26 +41,70 @@ public class ModBiomes {
     public static Biome sequoiaForest(Registerable<Biome> context) {
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
 
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 8, 4, 4));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 4, 2, 3));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 8, 2, 4));
 
-        DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
+        //DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
 
         GenerationSettings.LookupBackedBuilder biomeBuilder =
                 new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                         context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-        globalOverworldGeneration(biomeBuilder);
-        DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
-        DefaultBiomeFeatures.addExtraGoldOre(biomeBuilder);
 
-        biomeBuilder.feature(
-                GenerationStep.Feature.VEGETAL_DECORATION,
-                VegetationPlacedFeatures.TREES_OLD_GROWTH_PINE_TAIGA
-        );
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // PLEASE PLEASE DO NOT CHANGE ANYTHING BELOW THIS LINE
+        // WHEN I WROTE THIS, ONLY GOD AND I KNEW HOW IT WORKS
+        // NOW ONLY GOD KNOWS
+        //
+        // pin
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        globalOverworldGeneration(biomeBuilder);
+
+        //RAW_GENERATION
+
+        //LAKES
+
+        //LOCAL_MODIFICATIONS
+
+        //UNDERGROUND_STRUCTURES
+
+        //SURFACE_STRUCTURES
+
+        //STRONGHOLDS
+
+        //UNDERGROUND_ORES
+
+        //UNDERGROUND_DECORATION
+
+        //FLUID_SPRINGS
+
+        //VEGETAL_DECORATION
+
+        //TOP_LAYER_MODIFICATION
+
+        //???OTHER????
+
+        DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
         DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);                                                        // TODO change this to the epic trees boxed made
+        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
+
+        biomeBuilder.feature( // TODO custom tree here
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                ModConfiguredFeatures.SEQUOIA_KEY
+        );
+
+        DefaultBiomeFeatures.addDefaultFlowers(biomeBuilder);
+        DefaultBiomeFeatures.addGiantTaigaGrass(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+        DefaultBiomeFeatures.addSweetBerryBushes(biomeBuilder);
+
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // now you are free to goof around, have fun >w<
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         return new Biome.Builder()
                 .precipitation(true)
