@@ -2,6 +2,7 @@ package com.github.pinmacaroon.sequoia.world.biome;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
 import com.github.pinmacaroon.sequoia.world.ModConfiguredFeatures;
+import com.github.pinmacaroon.sequoia.world.ModPlacedFeatures;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -16,10 +17,7 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.MiscPlacedFeatures;
-import net.minecraft.world.gen.feature.UndergroundPlacedFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.world.gen.feature.*;
 
 public class ModBiomes {
     public static final RegistryKey<Biome> SEQUOIA_FOREST = RegistryKey.of(RegistryKeys.BIOME,
@@ -94,7 +92,7 @@ public class ModBiomes {
 
         biomeBuilder.feature( // TODO custom tree here
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModConfiguredFeatures.SEQUOIA_KEY
+                ModPlacedFeatures.SEQUOIA_PK
         );
 
         DefaultBiomeFeatures.addDefaultFlowers(biomeBuilder);

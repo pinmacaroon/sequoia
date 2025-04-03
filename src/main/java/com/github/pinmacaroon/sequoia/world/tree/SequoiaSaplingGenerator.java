@@ -7,10 +7,15 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
 
-public class SequoiaSaplingGenerator extends SaplingGenerator {
-    @Nullable
-    @Override
-    protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return ModConfiguredFeatures.SEQUOIA_KEY;
-    }
+import java.util.Optional;
+
+public class SequoiaSaplingGenerator {
+    public static final SaplingGenerator SEQUOIA =
+            new SaplingGenerator("sequoia", 0f,
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(ModConfiguredFeatures.SEQUOIA_KEY),
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.empty());
 }

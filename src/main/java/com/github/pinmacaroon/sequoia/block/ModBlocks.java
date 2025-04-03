@@ -145,6 +145,13 @@ public class ModBlocks {
             )
     );
 
+    public static final Block FAKE_SAPLING = registerBlock(
+            "fakesapling",
+            new SaplingBlock(
+
+            )
+    );
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Sequoia.MOD_ID, name), block);
