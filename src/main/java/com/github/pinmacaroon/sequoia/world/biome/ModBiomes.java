@@ -92,7 +92,8 @@ public class ModBiomes {
 
         biomeBuilder.feature( // TODO custom tree here
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.SEQUOIA_PK
+                VegetationPlacedFeatures.TREES_TAIGA
+                //ModPlacedFeatures.SEQUOIA_PK
         );
 
         DefaultBiomeFeatures.addDefaultFlowers(biomeBuilder);

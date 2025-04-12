@@ -24,7 +24,7 @@ public class ModPlacedFeatures {
 
         register(context, SEQUOIA_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SEQUOIA_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.1f, 2),
-                        ModBlocks.PINECONE)); // todo add fake sapling & finish tut https://youtu.be/zUpFEaRnvIQ
+                        ModBlocks.SEQUOIA_SAPLING)); // todo add fake sapling & finish tut https://youtu.be/zUpFEaRnvIQ
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

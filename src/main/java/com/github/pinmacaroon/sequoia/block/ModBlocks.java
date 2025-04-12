@@ -1,6 +1,8 @@
 package com.github.pinmacaroon.sequoia.block;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
+import com.github.pinmacaroon.sequoia.world.ModConfiguredFeatures;
+import com.github.pinmacaroon.sequoia.world.SequoiaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
@@ -145,10 +147,11 @@ public class ModBlocks {
             )
     );
 
-    public static final Block FAKE_SAPLING = registerBlock(
-            "fakesapling",
+    public static final Block SEQUOIA_SAPLING = registerBlock(
+            "sequoia_sapling",
             new SaplingBlock(
-
+                    new SequoiaSaplingGenerator(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
             )
     );
 
