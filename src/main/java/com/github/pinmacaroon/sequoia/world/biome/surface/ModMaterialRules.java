@@ -16,10 +16,10 @@ public class ModMaterialRules {
         MaterialRules.MaterialRule grassSurface = MaterialRules.sequence(MaterialRules.condition(isAtOrAboveWaterLevel,
                 PODZOL), DIRT);
 
-        return MaterialRules.sequence(/*
+        return MaterialRules.sequence(
                 MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.SEQUOIA_FOREST),
                                 MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, makeStateRule(Blocks.STONE))),
-                        MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, makeStateRule(Blocks.STONE))),*/
+                        MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, makeStateRule(Blocks.STONE))),
 
                 MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, grassSurface)
         );
