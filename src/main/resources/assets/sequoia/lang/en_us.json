@@ -13,5 +13,6 @@
     "block.sequoia.sequoia_pressure_plate": "Sequoia Pressure Plate",
     "block.sequoia.sequoia_trapdoor": "Sequoia Trapdoor",
     "block.sequoia.sequoia_button": "Sequoia Button",
-    "block.sequoia.pinecone": "Pinecone"
+    "block.sequoia.pinecone": "Pinecone",
+    "block.sequoia.sequoia_sapling": "Sequoia Sapling"
 }

@@ -1,6 +1,5 @@
 package com.github.pinmacaroon.sequoia.world;
 
-import com.github.pinmacaroon.sequoia.Sequoia;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.random.Random;
@@ -12,6 +11,6 @@ public class SequoiaSaplingGenerator  extends SaplingGenerator {
     @Nullable
     @Override
     protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return ModConfiguredFeatures.SEQUOIA_KEY;
+        return ModConfiguredFeatures.SMALL_SEQUOIA;
     }
 }

@@ -1,15 +1,12 @@
 package com.github.pinmacaroon.sequoia.world.biome;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
-import com.github.pinmacaroon.sequoia.world.ModConfiguredFeatures;
 import com.github.pinmacaroon.sequoia.world.ModPlacedFeatures;
-import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
@@ -90,10 +87,14 @@ public class ModBiomes {
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
         DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);
 
-        biomeBuilder.feature( // TODO custom tree here
+        biomeBuilder.feature(
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                //VegetationPlacedFeatures.TREES_TAIGA
-                ModPlacedFeatures.SEQUOIA_PK
+                ModPlacedFeatures.SMALL_SEQUOIA_PK
+        );
+
+        biomeBuilder.feature(
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                ModPlacedFeatures.MEDIUM_SEQUOIA_PK
         );
 
         DefaultBiomeFeatures.addDefaultFlowers(biomeBuilder);

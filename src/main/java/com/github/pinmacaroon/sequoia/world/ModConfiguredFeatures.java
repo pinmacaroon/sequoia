@@ -13,7 +13,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.PineFoliagePlacer;
+import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
+import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
@@ -21,14 +22,26 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 public class ModConfiguredFeatures {
 
-    public static final  RegistryKey<ConfiguredFeature<?, ?>> SEQUOIA_KEY = registerKey("sequoia");
+    public static final  RegistryKey<ConfiguredFeature<?, ?>> SMALL_SEQUOIA = registerKey("sequoia");
+    public static final  RegistryKey<ConfiguredFeature<?, ?>> MEDIUM_SEQUOIA = registerKey("medium_sequoia");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        register(context, SEQUOIA_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+        register(context, SMALL_SEQUOIA, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LOG),
                 new StraightTrunkPlacer(5, 2, 1),
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LEAVES),
-                new SpruceFoliagePlacer(UniformIntProvider.create(2, 3), UniformIntProvider.create(0, 2), UniformIntProvider.create(1, 2)),
+                new SpruceFoliagePlacer(
+                        UniformIntProvider.create(2, 3),
+                        UniformIntProvider.create(0, 2),
+                        UniformIntProvider.create(1, 2)),
+                new TwoLayersFeatureSize(2, 0, 2))
+                .ignoreVines().build());
+        register(context, MEDIUM_SEQUOIA, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(ModBlocks.SEQUOIA_LOG),
+                new GiantTrunkPlacer(9, 7, 6),
+                BlockStateProvider.of(ModBlocks.SEQUOIA_LEAVES),
+                //new MegaPineFoliagePlacer(UniformIntProvider.create(4,6), UniformIntProvider.create(0,2), UniformIntProvider.create(3,5)),
+                new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
                 new TwoLayersFeatureSize(2, 0, 2))
                 .ignoreVines().build());
     }
@@ -37,8 +50,12 @@ public class ModConfiguredFeatures {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(Sequoia.MOD_ID, name));
     }
 
-    private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> context,
-                                                                                   RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
+    private static <
+            FC extends FeatureConfig,
+            F extends Feature<FC>
+            > void register(Registerable<ConfiguredFeature<?, ?>> context,
+                            RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration
+    ) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
 

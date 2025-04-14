@@ -2,6 +2,7 @@ package com.github.pinmacaroon.sequoia.item;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Blocks;
@@ -13,6 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
     //public static final Item PINE_CONE = registerItem("pine_cone", new Item(new FabricItemSettings()));
+    public static final Item BIFLAG = registerItem("biflag", new Item(new FabricItemSettings()));
 
     private static void addItemsToBuildingBlockItemGroup(FabricItemGroupEntries entries) {
         entries.addAfter(Blocks.WARPED_BUTTON, ModBlocks.SEQUOIA_LOG);
@@ -40,6 +42,12 @@ public class ModItems {
     }
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
+        entries.add(BIFLAG);
+    }
+
+    private static void addItemsToNaturalItemGroup(FabricItemGroupEntries entries) {
+        entries.addAfter(Blocks.SPRUCE_SAPLING, ModBlocks.SEQUOIA_SAPLING);
+        entries.addAfter(Blocks.SPRUCE_SAPLING, ModBlocks.PINECONE);
     }
 
     private static Item registerItem(String name, Item item) {
@@ -54,5 +62,6 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItems::addItemsToFoodItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(ModItems::addItemsToNaturalItemGroup);
     }
 }

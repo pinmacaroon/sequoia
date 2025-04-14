@@ -32,6 +32,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerDoor(ModBlocks.SEQUOIA_DOOR);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.SEQUOIA_TRAPDOOR);
+
+        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.SEQUOIA_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override

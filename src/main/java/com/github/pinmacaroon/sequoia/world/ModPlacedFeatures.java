@@ -17,14 +17,19 @@ import java.util.List;
 
 public class ModPlacedFeatures {
 
-    public static final RegistryKey<PlacedFeature> SEQUOIA_PK = registerKey("sequoia_placed");
+    public static final RegistryKey<PlacedFeature> SMALL_SEQUOIA_PK = registerKey("small_sequoia");
+    public static final RegistryKey<PlacedFeature> MEDIUM_SEQUOIA_PK = registerKey("medium_sequoia");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        register(context, SEQUOIA_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SEQUOIA_KEY),
-                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.1f, 2),
-                        ModBlocks.SEQUOIA_SAPLING)); // todo add fake sapling & finish tut https://youtu.be/zUpFEaRnvIQ
+        register(context, SMALL_SEQUOIA_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_SEQUOIA),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(6, 0.2f, 2),
+                        ModBlocks.SEQUOIA_SAPLING));
+
+        register(context, MEDIUM_SEQUOIA_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MEDIUM_SEQUOIA),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.1f, 1),
+                        ModBlocks.SEQUOIA_SAPLING));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

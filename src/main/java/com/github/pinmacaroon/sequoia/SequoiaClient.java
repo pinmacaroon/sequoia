@@ -1,6 +1,7 @@
 package com.github.pinmacaroon.sequoia;
 
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
+import com.github.pinmacaroon.sequoia.item.ModItems;
 import net.fabricmc.api.ClientModInitializer;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -14,5 +15,7 @@ public class SequoiaClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PINECONE, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEQUOIA_DOOR, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEQUOIA_TRAPDOOR, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SEQUOIA_SAPLING, RenderLayer.getCutout());
+		//BlockRenderLayerMap.INSTANCE.putItem(ModItems.BIFLAG, RenderLayer.getCutout());
 	}
 }
