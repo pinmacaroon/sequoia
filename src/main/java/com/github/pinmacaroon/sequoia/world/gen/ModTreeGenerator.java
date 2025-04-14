@@ -9,7 +9,7 @@ import net.minecraft.world.gen.GenerationStep;
 
 public class ModTreeGenerator {
     public static void genTrees(){
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PLAINS, BiomeKeys.FOREST),
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.FOREST),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.SEQUOIA_PK);
     }
 }

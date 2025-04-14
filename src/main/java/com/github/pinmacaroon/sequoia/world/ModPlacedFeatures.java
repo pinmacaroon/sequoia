@@ -19,7 +19,7 @@ public class ModPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> SEQUOIA_PK = registerKey("sequoia_placed");
 
-    public static void boostrap(Registerable<PlacedFeature> context) {
+    public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, SEQUOIA_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SEQUOIA_KEY),

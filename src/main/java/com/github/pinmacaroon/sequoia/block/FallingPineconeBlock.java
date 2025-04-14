@@ -14,7 +14,9 @@ public class FallingPineconeBlock extends FallingBlock {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= world.getBottomY() && !world.getBlockState(pos.up()).isOf(ModBlocks.SEQUOIA_LEAVES)) {
+        if (
+                canFallThrough(world.getBlockState(pos.down())) && pos.getY()
+                        >= world.getBottomY() && !world.getBlockState(pos.up()).isOf(ModBlocks.SEQUOIA_LEAVES)) {
             FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
             this.configureFallingBlockEntity(fallingBlockEntity);
         }
