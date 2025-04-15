@@ -2,6 +2,7 @@ package com.github.pinmacaroon.sequoia.datagen;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
+import com.github.pinmacaroon.sequoia.etc.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Item;
@@ -30,6 +31,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.STRIPPED_SEQUOIA_WOOD.asItem());
         getOrCreateTagBuilder(ItemTags.SAPLINGS)
                 .add(ModBlocks.PINECONE.asItem());
+        getOrCreateTagBuilder(ModTags.Items.SEQUOIA_LOG_LIKES)
+                .add(ModBlocks.SEQUOIA_LOG.asItem())
+                .add(ModBlocks.STRIPPED_SEQUOIA_LOG.asItem())
+                .add(ModBlocks.SEQUOIA_WOOD.asItem())
+                .add(ModBlocks.STRIPPED_SEQUOIA_WOOD.asItem());
     }
     private static TagKey<Item> of(String id) {
         return TagKey.of(RegistryKeys.ITEM, new Identifier(Sequoia.MOD_ID + ":" + id));
