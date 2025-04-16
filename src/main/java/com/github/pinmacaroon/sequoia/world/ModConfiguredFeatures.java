@@ -2,6 +2,8 @@ package com.github.pinmacaroon.sequoia.world;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
+import com.google.common.collect.ImmutableList;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -17,6 +19,7 @@ import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
 import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
@@ -38,12 +41,13 @@ public class ModConfiguredFeatures {
                 .ignoreVines().build());
         register(context, MEDIUM_SEQUOIA, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LOG),
-                new GiantTrunkPlacer(9, 7, 6),
+                new GiantTrunkPlacer(16, 2, 14),
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LEAVES),
-                //new MegaPineFoliagePlacer(UniformIntProvider.create(4,6), UniformIntProvider.create(0,2), UniformIntProvider.create(3,5)),
-                new DarkOakFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0)),
+                new MegaPineFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(5, 9)),
                 new TwoLayersFeatureSize(2, 0, 2))
-                .ignoreVines().build());
+                .ignoreVines()
+                .decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL))))
+                .build());
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
