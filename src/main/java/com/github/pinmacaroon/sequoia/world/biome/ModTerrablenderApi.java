@@ -12,9 +12,9 @@ public class ModTerrablenderApi implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
         Regions.register(new ModOverworldRegion(new Identifier(Sequoia.MOD_ID, "overworld"), RegionType.OVERWORLD,
-                4));
+                3));
 
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Sequoia.MOD_ID,
-                ModMaterialRules.makeRules());
+        /*SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Sequoia.MOD_ID,
+                ModMaterialRules.makeRules());*/
     }
 }
