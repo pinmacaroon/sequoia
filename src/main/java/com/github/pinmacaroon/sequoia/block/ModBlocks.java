@@ -1,7 +1,6 @@
 package com.github.pinmacaroon.sequoia.block;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
-import com.github.pinmacaroon.sequoia.world.ModConfiguredFeatures;
 import com.github.pinmacaroon.sequoia.world.SequoiaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -65,7 +64,6 @@ public class ModBlocks {
             new LeavesBlock(
                     FabricBlockSettings
                             .copyOf(Blocks.OAK_LEAVES)
-                            .strength(2f)
                             .nonOpaque()
             )
     );

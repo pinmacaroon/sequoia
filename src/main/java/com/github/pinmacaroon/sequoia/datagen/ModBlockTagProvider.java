@@ -26,5 +26,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SEQUOIA_FENCE_GATE);
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.SEQUOIA_LEAVES);
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+                .add(ModBlocks.SEQUOIA_LEAVES);
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.PINECONE);
     }
 }

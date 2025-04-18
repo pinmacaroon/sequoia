@@ -1,7 +1,6 @@
 package com.github.pinmacaroon.sequoia;
 
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
-import com.github.pinmacaroon.sequoia.item.ModItems;
 import net.fabricmc.api.ClientModInitializer;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;

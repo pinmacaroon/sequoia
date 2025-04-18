@@ -26,6 +26,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SEQUOIA_PRESSURE_PLATE);
         addDrop(ModBlocks.SEQUOIA_SAPLING);
         addDrop(ModBlocks.SEQUOIA_DOOR, doorDrops(ModBlocks.SEQUOIA_DOOR));
-        addDrop(ModBlocks.SEQUOIA_LEAVES,leavesDrops(ModBlocks.SEQUOIA_LEAVES, ModBlocks.SEQUOIA_SAPLING, 0.005f));
+        addDrop(ModBlocks.SEQUOIA_LEAVES,leavesDrops(ModBlocks.SEQUOIA_LEAVES, ModBlocks.SEQUOIA_SAPLING, 0.05f));
     }
 }

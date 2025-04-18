@@ -9,13 +9,11 @@ import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -23,14 +21,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output);
     }
 
-
-
-    private static final List<ItemConvertible> LOG_LIKES = List.of(
-            ModBlocks.SEQUOIA_LOG,
-            ModBlocks.STRIPPED_SEQUOIA_LOG,
-            ModBlocks.SEQUOIA_WOOD,
-            ModBlocks.STRIPPED_SEQUOIA_WOOD
-    );
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {

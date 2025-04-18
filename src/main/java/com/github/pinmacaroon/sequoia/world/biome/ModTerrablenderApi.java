@@ -1,11 +1,9 @@
 package com.github.pinmacaroon.sequoia.world.biome;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
-import com.github.pinmacaroon.sequoia.world.biome.surface.ModMaterialRules;
 import net.minecraft.util.Identifier;
 import terrablender.api.RegionType;
 import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
 import terrablender.api.TerraBlenderApi;
 
 public class ModTerrablenderApi implements TerraBlenderApi {
