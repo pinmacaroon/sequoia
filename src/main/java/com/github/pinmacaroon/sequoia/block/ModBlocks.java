@@ -137,11 +137,14 @@ public class ModBlocks {
     //credit: potato_archivist
     public static final Block PINECONE = registerBlock(
             "pinecone",
-            new FallingPineconeBlock(
+            new ConditionalFallingBlock(
                     FabricBlockSettings
                             .create()
                             .strength(3f)
-                            .sounds(BlockSoundGroup.WOOD)
+                            .sounds(BlockSoundGroup.WOOD),
+                    SEQUOIA_LEAVES,
+                    true,
+                    true
             )
     );
 
