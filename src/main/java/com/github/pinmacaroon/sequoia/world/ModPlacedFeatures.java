@@ -19,6 +19,7 @@ public class ModPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> SMALL_SEQUOIA_PK = registerKey("small_sequoia");
     public static final RegistryKey<PlacedFeature> MEDIUM_SEQUOIA_PK = registerKey("medium_sequoia");
+    public static final RegistryKey<PlacedFeature> PINECONE_SCATTER_PK = registerKey("pinecone_scatter");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -30,6 +31,9 @@ public class ModPlacedFeatures {
         register(context, MEDIUM_SEQUOIA_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MEDIUM_SEQUOIA),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.1f, 1),
                         ModBlocks.SEQUOIA_SAPLING));
+
+        register(context, PINECONE_SCATTER_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PINECONE_SCATTER),
+                VegetationPlacedFeatures.modifiers(2));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

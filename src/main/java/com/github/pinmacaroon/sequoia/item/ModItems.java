@@ -49,7 +49,8 @@ public class ModItems {
 
     private static void addItemsToNaturalItemGroup(FabricItemGroupEntries entries) {
         entries.addAfter(Blocks.SPRUCE_SAPLING, ModBlocks.SEQUOIA_SAPLING);
-        entries.addAfter(Blocks.SPRUCE_SAPLING, ModBlocks.PINECONE);
+        entries.addAfter(Blocks.FLOWERING_AZALEA, ModBlocks.PINECONE);
+        entries.addAfter(Blocks.FLOWERING_AZALEA_LEAVES, ModBlocks.SEQUOIA_LEAVES);
     }
 
     private static Item registerItem(String name, Item item) {

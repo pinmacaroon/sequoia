@@ -83,6 +83,10 @@ public class ModBiomes {
         //???OTHER????
 
         DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
+        biomeBuilder.feature(
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                ModPlacedFeatures.PINECONE_SCATTER_PK
+        );
         DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
         DefaultBiomeFeatures.addDefaultDisks(biomeBuilder);

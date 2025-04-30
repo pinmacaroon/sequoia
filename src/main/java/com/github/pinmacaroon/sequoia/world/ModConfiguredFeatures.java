@@ -7,13 +7,12 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
@@ -24,8 +23,9 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 public class ModConfiguredFeatures {
 
-    public static final  RegistryKey<ConfiguredFeature<?, ?>> SMALL_SEQUOIA = registerKey("sequoia");
-    public static final  RegistryKey<ConfiguredFeature<?, ?>> MEDIUM_SEQUOIA = registerKey("medium_sequoia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_SEQUOIA = registerKey("sequoia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MEDIUM_SEQUOIA = registerKey("medium_sequoia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PINECONE_SCATTER = registerKey("pinecone_scatter");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         register(context, SMALL_SEQUOIA, Feature.TREE, new TreeFeatureConfig.Builder(
@@ -38,6 +38,7 @@ public class ModConfiguredFeatures {
                         UniformIntProvider.create(1, 2)),
                 new TwoLayersFeatureSize(2, 0, 2))
                 .ignoreVines().build());
+
         register(context, MEDIUM_SEQUOIA, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LOG),
                 new GiantTrunkPlacer(16, 2, 14),
@@ -47,6 +48,16 @@ public class ModConfiguredFeatures {
                 .ignoreVines()
                 .decorators(ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL))))
                 .build());
+
+        register(context, PINECONE_SCATTER, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(
+                BlockStateProvider.of(
+                        ModBlocks.PINECONE
+                                .getDefaultState()
+                                .rotate(
+                                        BlockRotation.random(Random.create())
+                                )
+                )
+        ));
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
