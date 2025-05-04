@@ -32,8 +32,8 @@ public class ModPlacedFeatures {
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.1f, 1),
                         ModBlocks.SEQUOIA_SAPLING));
 
-        register(context, PINECONE_SCATTER_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PINECONE_SCATTER),
-                VegetationPlacedFeatures.modifiers(2));
+        /*register(context, PINECONE_SCATTER_PK, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PINECONE_SCATTER),
+                VegetationPlacedFeatures.modifiers(2));*/
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
