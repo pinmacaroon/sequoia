@@ -68,7 +68,7 @@ public class ConditionalFallingBlock extends FallingBlock {
 
     @Override
     public void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity) {
-        if(fallingBlockEntity.timeFalling >= 13 && world.getBlockState(pos).isIn(hanger_blocks) && breaks){
+        if(fallingBlockEntity.timeFalling >= 13 && world.getBlockState(pos).isOf(this) && breaks){
             world.breakBlock(pos, false);
             dropStack(world, pos, new ItemStack(ModBlocks.SEQUOIA_SAPLING, world.random.nextInt(2)));
             world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
