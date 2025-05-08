@@ -29,6 +29,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(ModBlocks.SEQUOIA_LEAVES);
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-                .add(ModBlocks.PINECONE);
+                .add(ModBlocks.PINECONE)
+                .add(ModBlocks.SEQUOIA_BUTTON);
+        //getOrCreateTagBuilder(BlockTags.SNAPS_GOAT_HORN) //TODO fix block tags, diff vanilla and local block tag-sets
     }
 }
