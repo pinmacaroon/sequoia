@@ -25,6 +25,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.mob.SilverfishEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -36,21 +37,21 @@ import net.minecraft.world.World;
  * conditional falling block, based on {@link net.minecraft.block.FallingBlock}
  */
 public class ConditionalFallingBlock extends FallingBlock {
-    private Block hangblock;
-    private boolean damages;
-    private boolean breaks;
+    private final TagKey<Block> hanger_blocks;
+    private final boolean damages;
+    private final boolean breaks;
 
     /**
      * constructor
      *
      * @param settings block settings
-     * @param hangblock {@link net.minecraft.block.Block} that keeps {@link ConditionalFallingBlock} hanging
+     * @param hangblock {@link net.minecraft.registry.tag.TagKey<net.minecraft.block.Block>} that keeps {@link ConditionalFallingBlock} hanging
      * @param damages should the block bonk entities under it
      * @param breaks should the block fall apart when landing after a big fall
      */
-    public ConditionalFallingBlock(Settings settings, Block hangblock, boolean damages, boolean breaks) {
+    public ConditionalFallingBlock(Settings settings, TagKey<Block> hangblock, boolean damages, boolean breaks) {
         super(settings);
-        this.hangblock = hangblock;
+        this.hanger_blocks = hangblock;
         this.damages = damages;
         this.breaks = breaks;
     }
@@ -59,7 +60,7 @@ public class ConditionalFallingBlock extends FallingBlock {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (
                 canFallThrough(world.getBlockState(pos.down())) && pos.getY()
-                        >= world.getBottomY() && !world.getBlockState(pos.up()).isOf(hangblock)) {
+                        >= world.getBottomY() && !world.getBlockState(pos.up()).isIn(hanger_blocks)) {
             FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, pos, state);
             this.configureFallingBlockEntity(fallingBlockEntity);
         }
@@ -67,7 +68,7 @@ public class ConditionalFallingBlock extends FallingBlock {
 
     @Override
     public void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity) {
-        if(fallingBlockEntity.timeFalling >= 13 && world.getBlockState(pos).isOf(this) && breaks){
+        if(fallingBlockEntity.timeFalling >= 13 && world.getBlockState(pos).isIn(hanger_blocks) && breaks){
             world.breakBlock(pos, false);
             dropStack(world, pos, new ItemStack(ModBlocks.SEQUOIA_SAPLING, world.random.nextInt(2)));
             world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
