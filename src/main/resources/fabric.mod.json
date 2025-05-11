@@ -5,7 +5,7 @@
     "name": "Sequoia",
     "description": "Adds a really nice biome with some really tall trees!",
     "authors": [
-        "BoxedBoi, PinMacaroon"
+        "BoxedBoi, PinMacaroon", "TaylorRuby"
     ],
     "contact": {
         "homepage": "https://modrinth.com/organization/colonthreegang",
@@ -35,7 +35,8 @@
         "fabricloader": ">=0.16.10",
         "minecraft": "~1.20.1",
         "java": ">=17",
-        "fabric-api": "*"
+        "fabric-api": "*",
+        "terrablender": "3.0.1.7"
     },
     "suggests": {
         "another-mod": "*"
