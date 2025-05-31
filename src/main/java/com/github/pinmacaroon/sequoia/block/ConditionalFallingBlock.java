@@ -31,6 +31,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 /**
@@ -72,7 +73,7 @@ public class ConditionalFallingBlock extends FallingBlock {
             world.breakBlock(pos, false);
             dropStack(world, pos, new ItemStack(ModBlocks.SEQUOIA_SAPLING, world.random.nextInt(2)));
             world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            if(world.random.nextInt(6) >= 5){
+            if(world.random.nextInt(6) >= 5 && world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)){
                 SilverfishEntity silverfishEntity = EntityType.SILVERFISH.create(world);
                 if (silverfishEntity != null) {
                     silverfishEntity.refreshPositionAndAngles(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
