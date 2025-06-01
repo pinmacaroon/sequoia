@@ -157,6 +157,16 @@ public class ModBlocks {
             )
     );
 
+    public static final Block BI_FLAG = registerBlock(
+            "bi_flag",
+            new FlagBlock(
+                    FabricBlockSettings.create()
+                            .burnable()
+                            .noCollision()
+                            .nonOpaque()
+            )
+    );
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Sequoia.MOD_ID, name), block);

@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "sequoia:block/bi_flag"
+        },
+        "facing=north": {
+            "model": "sequoia:block/bi_flag",
+            "y": 270
+        },
+        "facing=south": {
+            "model": "sequoia:block/bi_flag",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "sequoia:block/bi_flag",
+            "y": 180
+        }
+    }
+}

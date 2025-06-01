@@ -16,7 +16,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
     //public static final Item PINE_CONE = registerItem("pine_cone", new Item(new FabricItemSettings()));
-    public static final Item BIFLAG = registerItem("biflag", new Item(new FabricItemSettings()));
+    //public static final Item BIFLAG = registerItem("biflag", new Item(new FabricItemSettings()));
 
     private static void addItemsToBuildingBlockItemGroup(FabricItemGroupEntries entries) {
         entries.addAfter(Blocks.WARPED_BUTTON, ModBlocks.SEQUOIA_LOG);
@@ -44,7 +44,7 @@ public class ModItems {
     }
 
     private static void addItemsToCombatItemGroup(FabricItemGroupEntries entries) {
-        entries.add(BIFLAG);
+
     }
 
     private static void addItemsToNaturalItemGroup(FabricItemGroupEntries entries) {
