@@ -179,7 +179,7 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        Sequoia.LOGGER.info("registering blocks for " + Sequoia.MOD_ID);
+        Sequoia.LOGGER.info("Registering blocks for " + Sequoia.MOD_ID);
     }
 
     public static ButtonBlock createWoodenButtonBlock(BlockSetType blockSetType, FeatureFlag... requiredFeatures) {

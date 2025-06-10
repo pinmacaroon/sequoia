@@ -29,8 +29,8 @@ public class FlagBlock extends Block {
 
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     protected static final VoxelShape BOUNDING_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 20.0, 10.0);
-    private Random random = Random.create();
-    private DefaultParticleType particleType;
+    private final Random random = Random.create();
+    private final DefaultParticleType particleType;
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

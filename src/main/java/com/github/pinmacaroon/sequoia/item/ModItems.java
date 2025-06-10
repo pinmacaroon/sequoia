@@ -2,7 +2,6 @@ package com.github.pinmacaroon.sequoia.item;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Blocks;
@@ -10,13 +9,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    //public static final Item PINE_CONE = registerItem("pine_cone", new Item(new FabricItemSettings()));
-    //public static final Item BIFLAG = registerItem("biflag", new Item(new FabricItemSettings()));
 
     private static void addItemsToBuildingBlockItemGroup(FabricItemGroupEntries entries) {
         entries.addAfter(Blocks.WARPED_BUTTON, ModBlocks.SEQUOIA_LOG);
@@ -32,6 +27,7 @@ public class ModItems {
         entries.addAfter(ModBlocks.SEQUOIA_DOOR, ModBlocks.SEQUOIA_TRAPDOOR);
         entries.addAfter(ModBlocks.SEQUOIA_TRAPDOOR, ModBlocks.SEQUOIA_BUTTON);
         entries.addAfter(ModBlocks.SEQUOIA_BUTTON, ModBlocks.SEQUOIA_PRESSURE_PLATE);
+        entries.add(ModBlocks.BI_FLAG);
     }
 
     private static void addItemsToIngredientsItemGroup(FabricItemGroupEntries entries) {
@@ -58,7 +54,7 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        Sequoia.LOGGER.info("items");
+        Sequoia.LOGGER.info("Registering items for " + Sequoia.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModItems::addItemsToBuildingBlockItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientsItemGroup);
@@ -66,10 +62,5 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(ModItems::addItemsToNaturalItemGroup);
-    }
-
-
-    private static TagKey<Item> of(String id) {
-        return TagKey.of(RegistryKeys.ITEM, new Identifier(id));
     }
 }

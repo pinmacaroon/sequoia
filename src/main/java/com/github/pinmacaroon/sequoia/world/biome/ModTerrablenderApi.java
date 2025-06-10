@@ -9,10 +9,6 @@ import terrablender.api.TerraBlenderApi;
 public class ModTerrablenderApi implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
-        Regions.register(new ModOverworldRegion(new Identifier(Sequoia.MOD_ID, "overworld"), RegionType.OVERWORLD,
-                3));
-
-        /*SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Sequoia.MOD_ID,
-                ModMaterialRules.makeRules());*/
+        Regions.register(new ModOverworldRegion(new Identifier(Sequoia.MOD_ID, "overworld"), RegionType.OVERWORLD, 3));
     }
 }

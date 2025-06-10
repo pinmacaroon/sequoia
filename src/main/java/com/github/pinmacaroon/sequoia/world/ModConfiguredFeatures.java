@@ -41,7 +41,7 @@ public class ModConfiguredFeatures {
 
         register(context, MEDIUM_SEQUOIA, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LOG),
-                new GiantTrunkPlacer(16, 2, 14),
+                new GiantTrunkPlacer(13, 2, 10),
                 BlockStateProvider.of(ModBlocks.SEQUOIA_LEAVES),
                 new MegaPineFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), UniformIntProvider.create(5, 9)),
                 new TwoLayersFeatureSize(2, 0, 2))

@@ -15,6 +15,6 @@ public class ModParticles {
         return Registry.register(Registries.PARTICLE_TYPE, new Identifier(Sequoia.MOD_ID, id), particle);
     }
     public static void registerModParticles() {
-        Sequoia.LOGGER.info("registering particles for " + Sequoia.MOD_ID);
+        Sequoia.LOGGER.info("Registering particles for " + Sequoia.MOD_ID);
     }
 }

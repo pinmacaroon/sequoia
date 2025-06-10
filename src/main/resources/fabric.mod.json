@@ -1,7 +1,7 @@
 {
     "schemaVersion": 1,
     "id": "sequoia",
-    "version": "${version}",
+    "version": "1.0.0",
     "name": "Sequoia",
     "description": "Adds a really nice biome with some really tall trees!",
     "authors": [
@@ -28,9 +28,6 @@
             "com.github.pinmacaroon.sequoia.world.biome.ModTerrablenderApi"
         ]
     },
-    "mixins": [
-        "sequoia.mixins.json"
-    ],
     "depends": {
         "fabricloader": ">=0.16.10",
         "minecraft": "~1.20.1",

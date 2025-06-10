@@ -4,6 +4,7 @@ import com.github.pinmacaroon.sequoia.block.ModBlocks;
 import com.github.pinmacaroon.sequoia.etc.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
@@ -21,6 +22,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output);
     }
 
+    public static void offerCustomUpgradeRecipe(Consumer<RecipeJsonProvider> exporter, Item input, RecipeCategory category, Item result, Item template, Item material) {
+        SmithingTransformRecipeJsonBuilder.create(
+                        Ingredient.ofItems(template), Ingredient.ofItems(input), Ingredient.ofItems(material), category, result
+                )
+                .criterion(hasItem(material), conditionsFromItem(material))
+                .offerTo(exporter, getItemPath(result) + "_smithing");
+    }
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
@@ -108,18 +116,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.SEQUOIA_FENCE_GATE), conditionsFromItem(ModBlocks.SEQUOIA_FENCE_GATE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SEQUOIA_FENCE_GATE)));
 
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.SEQUOIA_BUTTON, 1)
                 .input(ModBlocks.SEQUOIA_PLANKS)
                 .criterion(hasItem(ModBlocks.SEQUOIA_PLANKS), conditionsFromItem(ModBlocks.SEQUOIA_PLANKS))
                 .criterion(hasItem(ModBlocks.SEQUOIA_BUTTON), conditionsFromItem(ModBlocks.SEQUOIA_BUTTON))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SEQUOIA_BUTTON)));
-    }
 
-    public static void offerCustomUpgradeRecipe(Consumer<RecipeJsonProvider> exporter, Item input, RecipeCategory category, Item result, Item template, Item material) {
-        SmithingTransformRecipeJsonBuilder.create(
-                        Ingredient.ofItems(template), Ingredient.ofItems(input), Ingredient.ofItems(material), category, result
-                )
-                .criterion(hasItem(material), conditionsFromItem(material))
-                .offerTo(exporter, getItemPath(result) + "_smithing");
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.BI_FLAG, 1)
+                .pattern("sp")
+                .pattern("sm")
+                .pattern("sb")
+                .input('p', Blocks.PURPLE_WOOL)
+                .input('m', Blocks.MAGENTA_WOOL)
+                .input('b', Blocks.BLUE_WOOL)
+                .input('s', Items.STICK)
+                .criterion(hasItem(Blocks.PURPLE_WOOL), conditionsFromItem(Blocks.PURPLE_WOOL))
+                .criterion(hasItem(Blocks.MAGENTA_WOOL), conditionsFromItem(Blocks.MAGENTA_WOOL))
+                .criterion(hasItem(Blocks.BLUE_WOOL), conditionsFromItem(Blocks.BLUE_WOOL))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .criterion(hasItem(ModBlocks.BI_FLAG), conditionsFromItem(ModBlocks.BI_FLAG))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.BI_FLAG)));
     }
 }
