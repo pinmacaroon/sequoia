@@ -1,6 +1,7 @@
 package com.github.pinmacaroon.sequoia.block;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
+import com.github.pinmacaroon.sequoia.etc.ModParticles;
 import com.github.pinmacaroon.sequoia.world.SequoiaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -163,7 +164,8 @@ public class ModBlocks {
                     FabricBlockSettings.create()
                             .burnable()
                             .noCollision()
-                            .nonOpaque()
+                            .nonOpaque(),
+                    ModParticles.BI_HEART
             )
     );
 

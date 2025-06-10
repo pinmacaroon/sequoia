@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "sequoia:block/bi_flag"
+		"1": "sequoia:block/bi_flag",
+		"particle": "sequoia:block/sequoia_log"
 	},
 	"elements": [
 		{

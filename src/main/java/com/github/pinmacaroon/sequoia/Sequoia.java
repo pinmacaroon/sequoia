@@ -1,6 +1,7 @@
 package com.github.pinmacaroon.sequoia;
 
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
+import com.github.pinmacaroon.sequoia.etc.ModParticles;
 import com.github.pinmacaroon.sequoia.item.ModItems;
 import com.github.pinmacaroon.sequoia.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
@@ -21,6 +22,7 @@ public class Sequoia implements ModInitializer {
 		ModWorldGeneration.genModWorldGen();
 		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();
+		ModParticles.registerModParticles();
 
 		StrippableBlockRegistry.register(ModBlocks.SEQUOIA_LOG, ModBlocks.STRIPPED_SEQUOIA_LOG);
 		StrippableBlockRegistry.register(ModBlocks.SEQUOIA_WOOD, ModBlocks.STRIPPED_SEQUOIA_WOOD);
