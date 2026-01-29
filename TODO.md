@@ -1,0 +1,5 @@
+- fix all the datagen stuff https://docs.fabricmc.net/1.21.4/develop/data-generation/recipes
+- remove the biflag fluff item
+- remove particles
+- pray that the structures dont need to be redone, as i dont have permission to rebuild them atm
+- pray that i have permission to use the textures

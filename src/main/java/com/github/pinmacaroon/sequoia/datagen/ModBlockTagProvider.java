@@ -10,34 +10,35 @@ import net.minecraft.registry.tag.BlockTags;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
+
     public ModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+        valueLookupBuilder(BlockTags.LOGS_THAT_BURN)
                 .add(ModBlocks.SEQUOIA_LOG)
                 .add(ModBlocks.SEQUOIA_WOOD)
                 .add(ModBlocks.STRIPPED_SEQUOIA_LOG)
                 .add(ModBlocks.STRIPPED_SEQUOIA_WOOD);
 
-        getOrCreateTagBuilder(BlockTags.FENCES)
+        valueLookupBuilder(BlockTags.FENCES)
                 .add(ModBlocks.SEQUOIA_FENCE);
 
-        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+        valueLookupBuilder(BlockTags.FENCE_GATES)
                 .add(ModBlocks.SEQUOIA_FENCE_GATE);
 
-        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
+        valueLookupBuilder(BlockTags.WOODEN_FENCES)
                 .add(ModBlocks.SEQUOIA_FENCE);
 
-        getOrCreateTagBuilder(BlockTags.LEAVES)
+        valueLookupBuilder(BlockTags.LEAVES)
                 .add(ModBlocks.SEQUOIA_LEAVES);
 
-        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+        valueLookupBuilder(BlockTags.HOE_MINEABLE)
                 .add(ModBlocks.SEQUOIA_LEAVES);
 
-        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+        valueLookupBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.PINECONE)
                 .add(ModBlocks.SEQUOIA_PRESSURE_PLATE)
                 .add(ModBlocks.SEQUOIA_TRAPDOOR)
@@ -51,63 +52,64 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SEQUOIA_FENCE)
                 .add(ModBlocks.SEQUOIA_FENCE_GATE)
                 .add(ModBlocks.SEQUOIA_SAPLING)
+                .add(ModBlocks.SEQUOIA_BUTTON)
+                .add(ModBlocks.SEQUOIA_WALL);
+
+        valueLookupBuilder(BlockTags.WOODEN_BUTTONS)
                 .add(ModBlocks.SEQUOIA_BUTTON);
 
-        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
+        valueLookupBuilder(BlockTags.BUTTONS)
                 .add(ModBlocks.SEQUOIA_BUTTON);
 
-        getOrCreateTagBuilder(BlockTags.BUTTONS)
-                .add(ModBlocks.SEQUOIA_BUTTON);
-
-        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+        valueLookupBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
                 .add(ModBlocks.SEQUOIA_PRESSURE_PLATE);
 
-        getOrCreateTagBuilder(BlockTags.PRESSURE_PLATES)
+        valueLookupBuilder(BlockTags.PRESSURE_PLATES)
                 .add(ModBlocks.SEQUOIA_PRESSURE_PLATE);
 
-        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
+        valueLookupBuilder(BlockTags.WOODEN_DOORS)
                 .add(ModBlocks.SEQUOIA_DOOR);
 
-        getOrCreateTagBuilder(BlockTags.DOORS)
+        valueLookupBuilder(BlockTags.DOORS)
                 .add(ModBlocks.SEQUOIA_DOOR);
 
-        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
+        valueLookupBuilder(BlockTags.WOODEN_TRAPDOORS)
                 .add(ModBlocks.SEQUOIA_TRAPDOOR);
 
-        getOrCreateTagBuilder(BlockTags.TRAPDOORS)
+        valueLookupBuilder(BlockTags.TRAPDOORS)
                 .add(ModBlocks.SEQUOIA_TRAPDOOR);
 
-        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
+        valueLookupBuilder(BlockTags.WOODEN_STAIRS)
                 .add(ModBlocks.SEQUOIA_STAIRS);
 
-        getOrCreateTagBuilder(BlockTags.STAIRS)
+        valueLookupBuilder(BlockTags.STAIRS)
                 .add(ModBlocks.SEQUOIA_STAIRS);
 
-        getOrCreateTagBuilder(BlockTags.SLABS)
+        valueLookupBuilder(BlockTags.SLABS)
                 .add(ModBlocks.SEQUOIA_SLAB);
 
-        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
+        valueLookupBuilder(BlockTags.WOODEN_SLABS)
                 .add(ModBlocks.SEQUOIA_SLAB);
 
-        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
+        valueLookupBuilder(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.SEQUOIA_SAPLING);
 
-        getOrCreateTagBuilder(BlockTags.SAPLINGS)
+        valueLookupBuilder(BlockTags.SAPLINGS)
                 .add(ModBlocks.SEQUOIA_SAPLING);
 
-        getOrCreateTagBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
+        valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
                 .add(ModBlocks.SEQUOIA_LOG);
 
-        getOrCreateTagBuilder(BlockTags.SNAPS_GOAT_HORN)
+        valueLookupBuilder(BlockTags.SNAPS_GOAT_HORN)
                 .add(ModBlocks.SEQUOIA_LOG);
 
-        getOrCreateTagBuilder(ModTags.Block.SEQUOIA_LOGS)
+        valueLookupBuilder(ModTags.Block.SEQUOIA_LOGS)
                 .add(ModBlocks.SEQUOIA_LOG)
                 .add(ModBlocks.STRIPPED_SEQUOIA_LOG)
                 .add(ModBlocks.SEQUOIA_WOOD)
                 .add(ModBlocks.STRIPPED_SEQUOIA_WOOD);
 
-        getOrCreateTagBuilder(BlockTags.PLANKS)
+        valueLookupBuilder(BlockTags.PLANKS)
                 .add(ModBlocks.SEQUOIA_PLANKS);
     }
 }

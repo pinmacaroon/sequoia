@@ -3,15 +3,20 @@ package com.github.pinmacaroon.sequoia.datagen;
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
-    public ModLootTableProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+
+    public ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
     public void generate() {
         addDrop(ModBlocks.SEQUOIA_LOG);
+        addDrop(ModBlocks.SEQUOIA_WALL);
         addDrop(ModBlocks.SEQUOIA_WOOD);
         addDrop(ModBlocks.STRIPPED_SEQUOIA_LOG);
         addDrop(ModBlocks.STRIPPED_SEQUOIA_WOOD);

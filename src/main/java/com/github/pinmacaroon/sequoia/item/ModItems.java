@@ -23,7 +23,8 @@ public class ModItems {
         entries.addAfter(ModBlocks.SEQUOIA_STAIRS, ModBlocks.SEQUOIA_SLAB);
         entries.addAfter(ModBlocks.SEQUOIA_SLAB, ModBlocks.SEQUOIA_FENCE);
         entries.addAfter(ModBlocks.SEQUOIA_FENCE, ModBlocks.SEQUOIA_FENCE_GATE);
-        entries.addAfter(ModBlocks.SEQUOIA_FENCE_GATE, ModBlocks.SEQUOIA_DOOR);
+        entries.addAfter(ModBlocks.SEQUOIA_FENCE_GATE, ModBlocks.SEQUOIA_WALL);
+        entries.addAfter(ModBlocks.SEQUOIA_WALL, ModBlocks.SEQUOIA_DOOR);
         entries.addAfter(ModBlocks.SEQUOIA_DOOR, ModBlocks.SEQUOIA_TRAPDOOR);
         entries.addAfter(ModBlocks.SEQUOIA_TRAPDOOR, ModBlocks.SEQUOIA_BUTTON);
         entries.addAfter(ModBlocks.SEQUOIA_BUTTON, ModBlocks.SEQUOIA_PRESSURE_PLATE);
@@ -50,11 +51,11 @@ public class ModItems {
     }
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(Sequoia.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, Identifier.of(Sequoia.MOD_ID, name), item);
     }
 
     public static void registerModItems() {
-        Sequoia.LOGGER.info("Registering items for " + Sequoia.MOD_ID);
+        Sequoia.LOGGER.info("Registering items and item groups for " + Sequoia.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(ModItems::addItemsToBuildingBlockItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientsItemGroup);

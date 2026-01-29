@@ -18,11 +18,15 @@
  */
 package com.github.pinmacaroon.sequoia.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
+import net.minecraft.block.MapColor;
+import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FallingBlockEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.mob.SilverfishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.TagKey;
@@ -31,6 +35,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
@@ -58,6 +63,11 @@ public class ConditionalFallingBlock extends FallingBlock {
     }
 
     @Override
+    protected MapCodec<? extends FallingBlock> getCodec() {
+        return null; // might produce null reference error or whatever
+    }
+
+    @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= world.getBottomY()
                 && !world.getBlockState(pos.up()).isIn(hanger_blocks)) {
@@ -67,15 +77,29 @@ public class ConditionalFallingBlock extends FallingBlock {
     }
 
     @Override
-    public void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity) {
+    public void onLanding(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos,
+                          FallingBlockEntity fallingBlockEntity)
+    {
         if (fallingBlockEntity.timeFalling >= 13 && world.getBlockState(pos).isOf(this) && breaks) {
             world.breakBlock(pos, false);
             dropStack(world, pos, new ItemStack(ModBlocks.SEQUOIA_SAPLING, world.random.nextInt(2)));
-            world.playSound(null, pos, SoundEvents.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            if (world.random.nextInt(6) >= 5 && world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)) {
-                SilverfishEntity silverfishEntity = EntityType.SILVERFISH.create(world);
+            world.playSound(null,
+                    pos,
+                    SoundEvents.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR,
+                    SoundCategory.BLOCKS,
+                    1.0F,
+                    0.8F + world.random.nextFloat() * 0.4F
+            );
+            if (world.random.nextInt(6) >= 5) {
+                SilverfishEntity silverfishEntity = EntityType.SILVERFISH.create(world, SpawnReason.TRIGGERED);
                 if (silverfishEntity != null) {
-                    silverfishEntity.refreshPositionAndAngles(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
+                    silverfishEntity.refreshPositionAndAngles(
+                            pos.getX() + 0.5,
+                            pos.getY(),
+                            pos.getZ() + 0.5,
+                            0.0F,
+                            0.0F
+                    );
                     world.spawnEntity(silverfishEntity);
                     silverfishEntity.playSpawnEffects();
                 }
@@ -86,5 +110,10 @@ public class ConditionalFallingBlock extends FallingBlock {
     @Override
     protected void configureFallingBlockEntity(FallingBlockEntity entity) {
         if (damages) entity.setHurtEntities(2f, 4);
+    }
+
+    @Override
+    public int getColor(BlockState state, BlockView world, BlockPos pos) {
+        return MapColor.BROWN.color;
     }
 }

@@ -18,7 +18,7 @@ import net.minecraft.world.gen.feature.*;
 
 public class ModBiomes {
     public static final RegistryKey<Biome> SEQUOIA_FOREST = RegistryKey.of(RegistryKeys.BIOME,
-            new Identifier(Sequoia.MOD_ID, "sequoia_forest"));
+            Identifier.of(Sequoia.MOD_ID, "sequoia_forest"));
 
     public static void bootstrap(Registerable<Biome> context){
         context.register(SEQUOIA_FOREST, sequoiaForest(context));
@@ -36,9 +36,9 @@ public class ModBiomes {
     public static Biome sequoiaForest(Registerable<Biome> context) {
         SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
 
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 8, 4, 4));
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 4, 2, 3));
-        spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 8, 2, 4));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, 4, new SpawnSettings.SpawnEntry(EntityType.WOLF, 8, 4));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, 3, new SpawnSettings.SpawnEntry(EntityType.RABBIT, 4, 2));
+        spawnBuilder.spawn(SpawnGroup.CREATURE, 4, new SpawnSettings.SpawnEntry(EntityType.FOX, 8, 2));
 
         //DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
         DefaultBiomeFeatures.addBatsAndMonsters(spawnBuilder);
@@ -100,7 +100,7 @@ public class ModBiomes {
 
         DefaultBiomeFeatures.addDefaultFlowers(biomeBuilder);
         DefaultBiomeFeatures.addGiantTaigaGrass(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder, true);
         DefaultBiomeFeatures.addSweetBerryBushes(biomeBuilder);
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

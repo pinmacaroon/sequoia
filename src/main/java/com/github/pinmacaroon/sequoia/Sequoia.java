@@ -1,7 +1,6 @@
 package com.github.pinmacaroon.sequoia;
 
 import com.github.pinmacaroon.sequoia.block.ModBlocks;
-import com.github.pinmacaroon.sequoia.etc.ModParticles;
 import com.github.pinmacaroon.sequoia.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -20,7 +19,6 @@ public class Sequoia implements ModInitializer {
 		LOGGER.info(MOD_ID + " is initializing!");
 		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();
-		ModParticles.registerModParticles();
 
 		Sequoia.LOGGER.info("Registering strippable blocks for " + Sequoia.MOD_ID);
 		StrippableBlockRegistry.register(ModBlocks.SEQUOIA_LOG, ModBlocks.STRIPPED_SEQUOIA_LOG);

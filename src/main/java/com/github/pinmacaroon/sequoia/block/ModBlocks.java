@@ -1,149 +1,123 @@
 package com.github.pinmacaroon.sequoia.block;
 
 import com.github.pinmacaroon.sequoia.Sequoia;
-import com.github.pinmacaroon.sequoia.etc.ModParticles;
-import com.github.pinmacaroon.sequoia.world.SequoiaSaplingGenerator;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.resource.featuretoggle.FeatureFlag;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
+import java.util.function.Function;
+
 public class ModBlocks {
     public static final WoodType SEQUIA_WOOD_TYPE = new WoodType("sequoia", BlockSetType.OAK);
-    //public static final BlockSetType SEQUIA_WOOD_TYPE = new BlockSetType("sequoia", BlockSetType.OAK);
-    //TODO custom BlockSetType for sequia ples
+    // use .setType() to get set
 
     public static final Block SEQUOIA_LOG = registerBlock(
             "sequoia_log",
-            new PillarBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_LOG)
-                            .strength(2f)
-            )
+            AbstractBlock.Settings
+                    .copy(Blocks.OAK_LOG),
+            PillarBlock::new
     );
     public static final Block SEQUOIA_WOOD = registerBlock(
             "sequoia_wood",
-            new PillarBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_WOOD)
-                            .strength(2f)
-            )
+            AbstractBlock.Settings
+                    .copy(Blocks.OAK_WOOD),
+            PillarBlock::new
     );
     public static final Block STRIPPED_SEQUOIA_LOG = registerBlock(
             "stripped_sequoia_log",
-            new PillarBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.STRIPPED_OAK_LOG)
-                            .strength(2f)
-            )
+            AbstractBlock.Settings
+                    .copy(Blocks.STRIPPED_OAK_LOG),
+            PillarBlock::new
     );
     public static final Block STRIPPED_SEQUOIA_WOOD = registerBlock(
             "stripped_sequoia_wood",
-            new PillarBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.STRIPPED_OAK_WOOD)
-                            .strength(2f)
-            )
+            AbstractBlock.Settings
+                    .copy(Blocks.STRIPPED_OAK_WOOD),
+            PillarBlock::new
     );
     public static final Block SEQUOIA_PLANKS = registerBlock(
             "sequoia_planks",
-            new Block(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_PLANKS)
-                            .strength(2f)
-            )
+            AbstractBlock.Settings
+                    .copy(Blocks.OAK_PLANKS),
+            Block::new
     );
     public static final Block SEQUOIA_LEAVES = registerBlock(
             "sequoia_leaves",
-            new LeavesBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_LEAVES)
-                            .nonOpaque()
+            AbstractBlock.Settings
+                    .copy(Blocks.OAK_LEAVES)
+                    .nonOpaque(),
+            settings -> new UntintedParticleLeavesBlock(
+                    0.01F,
+                    ParticleTypes.PALE_OAK_LEAVES, //TODO get someone to make the leaves falling particle thing
+                    settings
             )
     );
     public static final Block SEQUOIA_SLAB = registerBlock(
             "sequoia_slab",
-            new SlabBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_SLAB)
-                            .strength(2f)
-            )
+            AbstractBlock.Settings
+                    .copy(Blocks.OAK_SLAB),
+            SlabBlock::new
     );
     public static final Block SEQUOIA_STAIRS = registerBlock(
             "sequoia_stairs",
-            new StairsBlock(
-                    SEQUOIA_PLANKS.getDefaultState(),
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_SLAB)
-                            .strength(2f)
-            )
+            AbstractBlock.Settings.copy(Blocks.OAK_STAIRS),
+            settings -> new StairsBlock(SEQUOIA_PLANKS.getDefaultState(), settings)
     );
     public static final Block SEQUOIA_FENCE = registerBlock(
-            "sequoia_fence",
-            new FenceBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_FENCE)
-                            .strength(2f)
-            )
+            "sequoia_fence", AbstractBlock.Settings.copy(Blocks.OAK_FENCE), FenceBlock::new
+    );
+    public static final Block SEQUOIA_WALL = registerBlock(
+            "sequoia_wall", AbstractBlock.Settings.copy(Blocks.OAK_FENCE), WallBlock::new
     );
     public static final Block SEQUOIA_FENCE_GATE = registerBlock(
             "sequoia_fence_gate",
-            new FenceGateBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_FENCE)
-                            .strength(2f),
-                    SEQUIA_WOOD_TYPE
-            )
+            AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE),
+            settings -> new FenceGateBlock(SEQUIA_WOOD_TYPE, settings)
     );
     public static final Block SEQUOIA_DOOR = registerBlock(
             "sequoia_door",
-            new DoorBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_FENCE)
-                            .strength(2f),
-                    BlockSetType.OAK
-            )
+            AbstractBlock.Settings.copy(Blocks.OAK_DOOR),
+            settings -> new DoorBlock(SEQUIA_WOOD_TYPE.setType(), settings)
     );
     public static final Block SEQUOIA_PRESSURE_PLATE = registerBlock(
             "sequoia_pressure_plate",
-            new PressurePlateBlock(
-                    PressurePlateBlock.ActivationRule.EVERYTHING,
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_FENCE)
-                            .strength(2f),
-                    BlockSetType.OAK
-            )
+            AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE),
+            settings -> new PressurePlateBlock(SEQUIA_WOOD_TYPE.setType(), settings)
     );
     public static final Block SEQUOIA_TRAPDOOR = registerBlock(
             "sequoia_trapdoor",
-            new TrapdoorBlock(
-                    FabricBlockSettings
-                            .copyOf(Blocks.OAK_FENCE)
-                            .strength(2f),
-                    BlockSetType.OAK
-            )
+            AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR),
+            settings -> new TrapdoorBlock(SEQUIA_WOOD_TYPE.setType(), settings)
     );
     public static final Block SEQUOIA_BUTTON = registerBlock(
             "sequoia_button",
-            createWoodenButtonBlock(BlockSetType.OAK)
+            AbstractBlock.Settings
+                    .create()
+                    .noCollision()
+                    .strength(0.5F)
+                    .pistonBehavior(PistonBehavior.DESTROY),
+            settings -> createWoodenButtonBlock(SEQUIA_WOOD_TYPE.setType(), settings)
     );
 
     //credit: potato_archivist
     public static final Block PINECONE = registerBlock(
             "pinecone",
-            new ConditionalFallingBlock(
-                    FabricBlockSettings
-                            .create()
-                            .strength(3f)
-                            .sounds(BlockSoundGroup.WOOD),
+            AbstractBlock.Settings
+                    .create()
+                    .strength(3f)
+                    .sounds(BlockSoundGroup.WOOD),
+            settings -> new ConditionalFallingBlock(
+                    settings,
                     BlockTags.LEAVES,
                     true,
                     true
@@ -152,42 +126,52 @@ public class ModBlocks {
 
     public static final Block SEQUOIA_SAPLING = registerBlock(
             "sequoia_sapling",
-            new SaplingBlock(
-                    new SequoiaSaplingGenerator(),
-                    FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
-            )
+            AbstractBlock.Settings.copy(Blocks.DARK_OAK_SAPLING),
+            settings -> new SaplingBlock(ModSaplings.SEQUOIA_SAPLING_GENERATOR, settings)
     );
 
     public static final Block BI_FLAG = registerBlock(
             "bi_flag",
-            new FlagBlock(
-                    FabricBlockSettings.create()
-                            .burnable()
-                            .noCollision()
-                            .nonOpaque(),
-                    ModParticles.BI_HEART
-            )
+            AbstractBlock.Settings
+                    .create()
+                    .burnable()
+                    .noCollision()
+                    .nonOpaque(),
+            FlagBlock::new
     );
 
-    private static Block registerBlock(String name, Block block) {
-        registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(Sequoia.MOD_ID, name), block);
+    private static Block registerBlockPrecise(String name,
+                                  Function<AbstractBlock.Settings, Block> blockFactory,
+                                  AbstractBlock.Settings settings, boolean shouldRegisterItem) {
+        RegistryKey<Block> blockKey = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Sequoia.MOD_ID, name));;
+        Block block = blockFactory.apply(settings.registryKey(blockKey));
+        if (shouldRegisterItem) {
+            RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Sequoia.MOD_ID, name));
+
+            BlockItem blockItem = new BlockItem(block, new Item.Settings().registryKey(itemKey).useBlockPrefixedTranslationKey());
+            Registry.register(Registries.ITEM, itemKey, blockItem);
+        }
+
+        return Registry.register(Registries.BLOCK, blockKey, block);
     }
 
-    private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(Sequoia.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
+    private static Block registerBlock(String name,
+                                       AbstractBlock.Settings settings,
+                                       Function<AbstractBlock.Settings, Block> blockFactory) {
+        return registerBlockPrecise(name, blockFactory, settings, true);
     }
 
     public static void registerModBlocks() {
         Sequoia.LOGGER.info("Registering blocks for " + Sequoia.MOD_ID);
     }
 
-    public static ButtonBlock createWoodenButtonBlock(BlockSetType blockSetType, FeatureFlag... requiredFeatures) {
-        AbstractBlock.Settings settings = AbstractBlock.Settings.create().noCollision().strength(0.5F).pistonBehavior(PistonBehavior.DESTROY);
-        if (requiredFeatures.length > 0) {
-            settings = settings.requires(requiredFeatures);
-        }
-
-        return new ButtonBlock(settings, blockSetType, 30, true);
+    public static ButtonBlock createWoodenButtonBlock(BlockSetType blockSetType, AbstractBlock.Settings settings, FeatureFlag... requiredFeatures) {
+        return new ButtonBlock(
+                blockSetType,
+                30,
+                (requiredFeatures.length > 0)
+                        ? settings.requires(requiredFeatures)
+                        : settings
+        );
     }
 }
