@@ -1,5 +1,3 @@
-- fix all the datagen stuff https://docs.fabricmc.net/1.21.4/develop/data-generation/recipes
-- remove the biflag fluff item
-- remove particles
-- pray that the structures dont need to be redone, as i dont have permission to rebuild them atm
-- pray that i have permission to use the textures
+- fix biome stuff so you can actually play the game
+- add maybe a pinecone piece item to make soup out of idk (needs textures, i need a texture artist lmao)
+- add falling leaves particle as its mandatory for some odd reason
